@@ -19,18 +19,19 @@ using namespace std;
 int main(int argc, const char * argv[]) {
     
     string input, first;
-    int i =0;
     int j = 0;
-    while(i==0)
+    while(1)
     {
         cin >> input;
         for(j; j < input.size(); j++)
         {
             if(isdigit(input[j]))
             {
-                first = push_back(
+                first = input[j];
+                cout << first;
             }
             
+            cout << first;
         }
 
     }
