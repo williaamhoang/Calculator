@@ -18,21 +18,26 @@ using namespace std;
 
 int main(int argc, const char * argv[]) {
     
-    string input, first;
-    int j = 0;
+    string input;
+    vector<string> first;
     while(1)
     {
         cin >> input;
-        for(j; j < input.size(); j++)
+        for(int j = 0; j < input.size(); j++)
         {
-            if(isdigit(input[j]))
+            if((input[j]) == '+')
+                ;
+
+            else
             {
-                first = input[j];
-                cout << first;
+                string str = input.substr(j,1);
+                first.push_back(str);
             }
-            
-            cout << first;
         }
+        for (int i = 0; i < input.size()-1; i++)
+            cout << first[i];
+        
+
 
     }
 
