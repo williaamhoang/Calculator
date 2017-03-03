@@ -1,47 +1,52 @@
-//
-//  main.cpp
-//  CalculatorProject
-//
-//  Created by William Hoang on 3/2/17.
-//  Copyright © 2017 COSC 1430. All rights reserved.
-//
-
-#include <iostream>
 #include <string>
-#include <sstream>
-#include <vector>
+#include <iostream>
+#include <cctype>
+#include <cmath>
 
 using namespace std;
 
+void checkInput(string);
+void returnResult(string, string, string);
 
-
-
-int main(int argc, const char * argv[]) {
-    
-    string input;
-    vector<string> first;
-    while(1)
-    {
-        cin >> input;
-        for(int j = 0; j < input.size(); j++)
-        {
-            if((input[j]) == '+')
-                ;
-
-            else
-            {
-                string str = input.substr(j,1);
-                first.push_back(str);
-            }
+int main() {
+    string userInput;
+    while(1) {
+        cout << "Enter Here => ";
+        cin >> userInput;
+        if (userInput == "quit" || userInput == "QUIT" || userInput == "exit" || userInput == "EXIT") {
+            cout << "Bye-bye!" << endl;
+            exit(0);
         }
-        for (int i = 0; i < input.size()-1; i++)
-            cout << first[i];
-        
-
-
+        checkInput(userInput);
     }
-
-    
     return 0;
 }
 
+void checkInput(string str) {
+    int length = str.length();
+    string first = "", second = "", arithOperator = "";
+    for (int i = 0; i < length; i++) {
+        if(isdigit(str[i]) || str[i] == '.') {
+            second += str[i];
+        } else {
+            arithOperator += str[i];
+            first = second;
+            second = "";
+        }
+    }
+    returnResult(first, second, arithOperator);
+}
+
+void returnResult(string first, string second, string arithOperator) {
+    double numFirst = stod(first.c_str()), numSecond = stod(second.c_str());
+    if (arithOperator == "+")
+        cout << first + arithOperator + second << "=" << numFirst + numSecond << endl;
+    else if (arithOperator == "/")
+        cout << first + arithOperator + second << "=" << numFirst / numSecond << endl;
+    else if (arithOperator == "*")
+        cout << first + arithOperator + second << "=" << numFirst * numSecond << endl;
+    else if (arithOperator == "-")
+        cout << first + arithOperator + second << "=" << numFirst - numSecond << endl;
+    else if (arithOperator == "%")
+        cout << first + arithOperator + second << "=" << remainder(numFirst, numSecond) << endl;
+}
