@@ -24,9 +24,7 @@ public:
     int finalNum2;
     
     
-    int setupInput();
-    void performingOperator();
-    
+    int calculate();    
 };
 
 

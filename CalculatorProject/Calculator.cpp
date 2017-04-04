@@ -10,68 +10,58 @@
 #include <cctype>
 #include <sstream>
 #include <typeinfo>
-int Calculator::setupInput()
+int Calculator::calculate()
 {
-    int stringSize;
-
-    
-
-    std::cin >> userInput;
-   // std::cout << userInput << std::endl;
-    
-    stringSize = userInput.length();
-    int y = 0;
-    while (y < stringSize)
+    while(userInput[0] != 'q' || 'Q') // Checks for user input "Quit" or "quit"
     {
-        if (isdigit(userInput[y]))
+        
+        int stringSize;
+        std::cin >> userInput;      // User Input
+    
+        stringSize = userInput.length();
+        int y = 0;
+        while (y < stringSize)
         {
-
+            if (isdigit(userInput[y]))
+            {}
+            else
+            {
+                posi = y;
+            }
+            y++;
         }
-        else
+        first = userInput.substr(0,posi);
+        second = userInput.substr(posi+1,y);
+        finalNum1 = std::stoi(first);       // Sigbart error
+        finalNum2 = std::stoi(second);
+        
+        
+        switch (userInput[posi])
         {
-            posi = y;
-        }
-        y++;
-    }
-  //  std::cout << "Position : " << posi << std::endl;
-    first = userInput.substr(0,posi);
-    second = userInput.substr(posi+1,y);
-    finalNum1 = std::stoi(first);
-    finalNum2 = std::stoi(second);
-   // std::cout <<"This: " << typeid(finalNum1).name();
-    
-    
-    
-    return 0;
-}
-
-
-void Calculator::performingOperator()
-{
-    while(1)
-    {
-        switch (userInput[posi]) {
             case '+':
                 std::cout << finalNum1 + finalNum2;
                 break;
-            
+                
             case '-':
                 std::cout << finalNum1 - finalNum2;
                 break;
-            
+                
             case '*':
                 std::cout << finalNum1 * finalNum2;
                 break;
-        
+                
             case '/':
                 std::cout << finalNum1 / finalNum2;
                 break;
-            
+                
             case '%':
                 std::cout << finalNum1 % finalNum2;
                 break;
         }
-        
-    }
 
+        
+       
+    }
+    return 0;
 }
+
