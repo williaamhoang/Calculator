@@ -22,9 +22,12 @@ public:
     int posi;
     int finalNum1;
     int finalNum2;
+    int stringSize;
+    int y = 0;
+    int x = 0;
     
     
-    int calculate();    
+    int calculate();
 };
 
 

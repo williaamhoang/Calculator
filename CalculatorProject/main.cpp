@@ -5,8 +5,14 @@ using namespace std;
 
 int main()
 {
+
     Calculator calc;
-    calc.calculate();
+    int i = 0;
+    while (i < 10)
+    {
+        calc.calculate();
+    }
+    cout.flush();
     return 0;
 }
 

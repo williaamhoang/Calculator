@@ -10,58 +10,66 @@
 #include <cctype>
 #include <sstream>
 #include <typeinfo>
+#include <ostream>
+#include <fstream>
+using namespace std;
 int Calculator::calculate()
 {
-    while(userInput[0] != 'q' || 'Q') // Checks for user input "Quit" or "quit"
+    cin >> userInput;
+    if (userInput[0] != 'q' || 'Q')
     {
-        
-        int stringSize;
-        std::cin >> userInput;      // User Input
-    
         stringSize = userInput.length();
         int y = 0;
+        int x = 0;
         while (y < stringSize)
         {
             if (isdigit(userInput[y]))
-            {}
+            {
+                x++; // bs code
+            }
             else
             {
-                posi = y;
+                posi = y;   //Position of the operator
             }
             y++;
         }
         first = userInput.substr(0,posi);
         second = userInput.substr(posi+1,y);
-        finalNum1 = std::stoi(first);       // Sigbart error
-        finalNum2 = std::stoi(second);
-        
-        
+        finalNum1 = std::stoi(first);       // user input to integer
+        finalNum2 = std::stoi(second);      // user input to integer
+
         switch (userInput[posi])
         {
             case '+':
-                std::cout << finalNum1 + finalNum2;
+                std::cout << "=" <<  finalNum1 + finalNum2 << endl;
                 break;
                 
+                
             case '-':
-                std::cout << finalNum1 - finalNum2;
+                std::cout << "=" << finalNum1 - finalNum2 <<endl;
                 break;
                 
             case '*':
-                std::cout << finalNum1 * finalNum2;
+
+                cout << "=" << finalNum1 * finalNum2 << endl;
                 break;
+
                 
             case '/':
-                std::cout << finalNum1 / finalNum2;
+                std::cout << "=" <<  finalNum1 / finalNum2 << endl;
                 break;
                 
             case '%':
-                std::cout << finalNum1 % finalNum2;
+                std::cout <<  "=" << finalNum1 % finalNum2 << endl;
                 break;
         }
-
+        cout << endl;
         
        
     }
+    
+    else
+        std::cout << "Goodbye";
     return 0;
 }
 
